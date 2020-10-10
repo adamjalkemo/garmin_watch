@@ -1,0 +1,9 @@
+<resources>
+    <bitmaps>
+    </bitmaps>
+
+    <fonts>
+    </fonts>
+
+    <string id="hello_world">Hello World</string>
+</resources>

@@ -1,6 +1,9 @@
 # garmin_watch
 Garmin watch app development
 
+Getting started
+https://developer.garmin.com/connect-iq/connect-iq-basics/getting-started/
+
 Get the sdk:
 https://developer.garmin.com/connect-iq/sdk/
 
