@@ -1,7 +1,7 @@
 DEVELOPER_KEY_PATH ?= developer_key.der
 
 DEVICE ?= fr235
-APP := hello_world
+APP ?= hello_world
 
 APP_PATH = apps/$(APP)
 
@@ -12,7 +12,11 @@ CFLAGS += -f $(APP_PATH)/monkey.jungle
 CFLAGS += -w
 #CFLAGS += -r
 
-PROG := hello_world.prg
+ifeq (, $(shell which monkeyc))
+	PATH := $(shell realpath ~/.Garmin/ConnectIQ/Sdks/*/bin):$(PATH)
+endif
+
+PROG := $(APP).prg
 
 .PHONY: all
 all: $(PROG)
@@ -27,4 +31,4 @@ simulate: $(PROG)
 
 .PHONY: clean
 clean:
-	rm $(PROG)
+	rm -f $(PROG) $(PROG).debug.xml

@@ -1,0 +1,14 @@
+<iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="1">
+    <iq:application entry="LowHeartRateVibrationApp" id="a32019bc3293fed321562ef98f8e920a" launcherIcon="@Drawables.LauncherIcon" minSdkVersion="1.2.0" name="@Strings.AppName" type="watch-app">
+        <iq:products>
+            <iq:product id="fr235"/>
+        </iq:products>
+        <iq:permissions>
+            <iq:uses-permission id="Sensor"/>
+        </iq:permissions>
+
+        <iq:languages>
+            <iq:language>en</iq:language>
+        </iq:languages>
+    </iq:application>
+</iq:manifest>
