@@ -1,4 +1,5 @@
 DEVELOPER_KEY_PATH ?= developer_key.der
+GARMIN_MOUNT_POINT ?= /media/adam/GARMIN
 
 DEVICE ?= fr235
 APP ?= hello_world
@@ -24,10 +25,14 @@ all: $(PROG)
 $(PROG): $(shell find $(APP_PATH))
 	monkeyc $(CFLAGS) -o $@
 
-.PHONY: connectiq
+.PHONY: simulate
 simulate: $(PROG)
 	pidof simulator || connectiq 2>&1 > /dev/null &
 	monkeydo $(PROG) $(DEVICE)
+
+.PHONY: deploy
+deploy: $(PROG)
+	cp $(PROG) $(GARMIN_MOUNT_POINT)/GARMIN/APPS/
 
 .PHONY: clean
 clean:

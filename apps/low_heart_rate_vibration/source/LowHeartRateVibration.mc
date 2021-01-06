@@ -8,11 +8,13 @@ using Toybox.WatchUi;
 using Toybox.Graphics;
 using Toybox.Application;
 using Toybox.Sensor;
+using Toybox.Attention;
 
 
 class StringView extends WatchUi.View {
 
     var string_HR = "---bpm";
+    var min_HR = 300;
 
     var font = Graphics.FONT_SMALL;
     var lineSpacing = Graphics.getFontHeight(font);
@@ -45,6 +47,7 @@ class StringView extends WatchUi.View {
         if( sensor_info.heartRate != null )
         {
             string_HR = HR.toString() + "bpm";
+            updateMinAndMaybeVibrate(HR);
         }
         else
         {
@@ -52,6 +55,24 @@ class StringView extends WatchUi.View {
         }
 
         WatchUi.requestUpdate();
+    }
+
+    function updateMinAndMaybeVibrate(HR)
+    {
+        if( min_HR > HR )
+        {
+            min_HR = HR;
+            if (Attention has :vibrate)
+            {
+                var vibrateData = [
+                    new Attention.VibeProfile(  50, 200 ),
+                    new Attention.VibeProfile(  100, 100 ),
+                    new Attention.VibeProfile(  50, 200 )
+                ];
+
+                Attention.vibrate(vibrateData);
+            }
+        }
     }
 }
 
