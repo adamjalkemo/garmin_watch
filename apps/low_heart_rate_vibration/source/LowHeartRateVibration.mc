@@ -11,7 +11,7 @@ using Toybox.Sensor;
 using Toybox.Attention;
 
 
-class StringView extends WatchUi.View {
+class HeartRateView extends WatchUi.View {
 
     var string_HR = "---bpm";
     var min_HR = 300;
@@ -65,9 +65,9 @@ class StringView extends WatchUi.View {
             if (Attention has :vibrate)
             {
                 var vibrateData = [
-                    new Attention.VibeProfile(  50, 200 ),
-                    new Attention.VibeProfile(  100, 100 ),
-                    new Attention.VibeProfile(  50, 200 )
+                    new Attention.VibeProfile( 50, 200 ),
+                    new Attention.VibeProfile( 100, 100 ),
+                    new Attention.VibeProfile( 50, 200 )
                 ];
 
                 Attention.vibrate(vibrateData);
@@ -84,6 +84,6 @@ class LowHeartRateVibrationApp extends Application.AppBase {
     }
 
     function getInitialView() {
-        return [ new StringView() ];
+        return [ new HeartRateView() ];
     }
 }
